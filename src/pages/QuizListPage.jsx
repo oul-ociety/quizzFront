@@ -14,7 +14,7 @@ export default function QuizList() {
         setLoading(false);
       } catch (err) {
         console.error(err);
-        setError('Erreur lors du chargement des quiz.');
+        setError('Erreur lors du chargement des quiz!');
         setLoading(false);
       }
     };
@@ -22,12 +22,12 @@ export default function QuizList() {
     fetchQuizzes();
   }, []);
 
-  if (loading) return <p className="text-center mt-10">Chargement en cours...</p>;
-  if (error) return <p className="text-center text-red-500 mt-10">{error}</p>;
+  if (loading) return <p className="load">Chargement en cours...</p>;
+  if (error) return <p className="danger">{error}</p>;
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-6">Liste des quiz disponibles</h1>
+      <h1 className="title1">Liste des quiz disponibles :</h1>
       {quizzes.length === 0 ? (
         <p>Aucun quiz trouvé.</p>
       ) : (
@@ -37,7 +37,7 @@ export default function QuizList() {
               <h2 className="text-xl font-semibold">{quiz.title}</h2>
               <p className="text-gray-600">{quiz.description}</p>
               <p className="text-sm text-gray-500 mt-2">
-                ✍️ Créé par : <span className="font-medium">{quiz.createdBy}</span>
+                ✍️ Créé par : <span className="title2">{quiz.createdBy}</span>
               </p>
               <p className="text-sm text-gray-500">
                 📋 {quiz.questions.length} question(s)
